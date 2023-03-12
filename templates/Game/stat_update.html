@@ -1,0 +1,21 @@
+{% extends 'Layout/basic.html' %} 
+{% block title %}Update{% endblock %}
+{% block content %} 
+    <form id='skill_form' action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" value="" name='update' id='update'>
+    </form>
+    {% for stat, value in ch.allocated_points.items %}
+        <p>{{stat}} - {{value}}</p>
+    {% endfor %}
+    <h2>Текущее количество очков: {{ch.lvl_points}}</h2>
+    <p>{{msg}}</p>
+    {% for stat, translate in point_translation.items %}
+        <p>{{translate}}</p>
+        <button id='{{stat}}' onclick="document.getElementById('skill_form').elements.update.value = '{{stat}}'; document.getElementById('skill_form').submit();">Улучшить</button>
+    {% endfor %}
+    <form action="{% url 'Game:travel' %}">
+        <button>Вернуться</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,218 @@
+html {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+}
+body{
+    background-color: #313131;
+    background-attachment: fixed;
+    background-size: auto;
+    margin: auto
+}
+a {
+    text-decoration: none;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+.home{
+    width: 950px;
+}
+
+.text_board{
+    border-radius: 25px;
+    font-size: 20px;
+}
+
+.col{
+    width: 20%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a.animated-button:link:after, a.animated-button:visited:after {
+    content: "";
+    position: absolute;
+    height: 0%;
+    left: 50%;
+    top: 50%;
+    width: 150%;
+    z-index: -1;
+    -webkit-transition: all 0.75s ease 0s;
+    -moz-transition: all 0.75s ease 0s;
+    -o-transition: all 0.75s ease 0s;
+    transition: all 0.75s ease 0s;
+}
+a.animated-button:link:hover, a.animated-button:visited:hover {
+    color: #313131;
+     text-shadow: none;
+}
+a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+     height: 500%;
+}
+a.animated-button:link, a.animated-button:visited {
+    position: relative;
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 15px;
+    color: #fff;
+    font-size:14px;
+    border-radius: 0;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: 0.10em;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+a.animated-button.victoria-one {
+    border: 2px solid #ffffff;
+}
+a.animated-button.victoria-one:after {
+    background: #ffffff;
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+}
+
+.stats{
+    max-width: 240px;
+    margin: 15px 0 0 15px;
+    position: fixed;
+    box-shadow: 2px 2px 3px #646464, inset 1px 1px 1px #646464;
+    padding: 6px;
+    border-radius: 10px;
+    background-color: #474747;
+}
+.start_panel{
+    display: flex;
+}
+.panel{
+    position: relative;
+    height: 450px;
+    overflow-y:auto;
+    flex-direction: row;
+}
+.content{
+    width: 900px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+.goods{
+    float: left;
+    width: 160px;
+    height: 190px;
+}
+.control{
+    color: #ffffff;
+    position: fixed;
+    top: 97%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+.link_c {
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    margin: 0 20px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    transition: .3s ease-in-out;
+    border-bottom: 2px solid #ffffff;
+    color: #555;
+    background-image: linear-gradient(180deg, transparent 65%, #ffffff 65%);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 0%;
+}
+.link_c:hover {
+    background-size: 100% 300%;
+}
+.empty{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+.block_c{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 90px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+}
+.buttom_c{
+    padding: 0;
+    background-image: none; 
+    background-color: transparent;
+    border: none;
+}
+.buttom_c img{
+    width: 40px;
+    height: 40px;
+}
+.buttom_c :hover{
+    border-radius: 100px;
+    box-shadow: inset 0 0 6px 4px #252525;
+}
+.buttom_c :active{
+    box-shadow: inset 0 0 6px 4px #1a1a1a;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.bar{
+    width: 240px;
+    height: 26px;
+    text-align: center;
+}
+
+.health{
+    position: relative;
+    border: 2px #ffffff solid;
+    border-radius: 5px;
+    padding-block: 2px;
+    z-index: 1;
+    text-align: center;
+}
+
+.health_2{
+    position: relative;
+    background-color: #e00000;
+    height: 95%;
+    border: #e00000;
+    border-radius: 5px;
+    top: -25.5px;
+    left: 1.5px;
+}
+.seal{
+    height: 50px;
+}
+.seals{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}

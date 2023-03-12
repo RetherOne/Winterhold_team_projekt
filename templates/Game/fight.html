@@ -1,0 +1,22 @@
+{% extends 'Layout/basic.html' %}
+{% block title %}Файтинг{%endblock%}
+{% block content %}
+    <h2>{{enemy.name}}</h2>
+    <p>{{enemy.hp}}/{{enemy_max_hp}}</p>
+    <p>{{atack_msg}}</p>
+    <p>{{dodge_msg}}</p>
+
+    <form id='atack_form' action="" method="post">
+        {%csrf_token%}
+        <input type='hidden' value="" name='atack' id='atack'>
+    </form>
+
+    <button id='head'
+        onclick="document.getElementById('atack_form').elements.atack.value = 'head'; document.getElementById('atack_form').submit();">Голова</button>
+    <button id='body'
+        onclick="document.getElementById('atack_form').elements.atack.value = 'body'; document.getElementById('atack_form').submit();">Корпус</button>
+    <button id='limbs'
+        onclick="document.getElementById('atack_form').elements.atack.value = 'limbs'; document.getElementById('atack_form').submit();">Конечности</button>
+    <button id='run'
+        onclick="document.getElementById('atack_form').elements.atack.value = 'run'; document.getElementById('atack_form').submit();">Бежать</button>
+{% endblock %}

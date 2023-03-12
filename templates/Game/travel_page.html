@@ -1,0 +1,8 @@
+{% extends 'Layout/basic.html' %}
+{% block title %}Travel page{% endblock %}
+{% block content %}
+    <p>{{ch.place.first_enter_text}}</p>
+    <form action="{% url 'Game:travel' %}">
+        <button>Дальше</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'Layout/basic.html'%}
+{% block title %}Win{% endblock %}
+{% block content %}
+    <p>{{dmsg}}<p>
+    <p>{{msg}}</p>
+    <form action='{% url "Game:travel" %}'>
+        <button>Продолжить</button>
+    </form>
+
+{%endblock%}

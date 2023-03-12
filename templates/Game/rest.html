@@ -1,0 +1,22 @@
+{% extends 'Layout/basic.html' %}
+{% block title %}Rest{% endblock %}
+{% block content %}
+    <p>Вы находите удобное место в тени</p>
+
+    <form action="{% url 'Game:equip' %}">
+        <button>Рюкзак</button>
+    </form>
+
+    <form action="{% url 'Game:eat' %}">
+        <button>Перекусить</button>
+    </form>
+
+    <form action = "{% url 'Game:stat_update' %}">
+        <button>Улучшить навык</button>
+    </form>
+
+    <form action="{% url 'Game:travel' %}">
+        <button>Вернуться</button>
+    </form>
+    
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'Layout/basic.html' %}
+{% block title %}Goodbye!{% endblock %}
+{% block content %}
+    <p>
+        Вы выполнили свое задание, принцесса благодарна и сполна отплатила вам. 
+        Но, похоже ее возлюбленный пропал и она просит найти его. 
+        Вы с горечью понимаете, что натворили...
+    </p>
+    
+    <form action="{% url 'Game:travel' %}">
+        <button>Вернуться</button>
+    </form>
+{% endblock %}

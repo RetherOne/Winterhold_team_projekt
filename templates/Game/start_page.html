@@ -1,0 +1,10 @@
+{% extends 'Layout/basic.html' %}
+{% block title %}Start{%endblock%}
+{% block content %}
+    <!--Веселая херотень-->
+    <!--Здесь не нужно что бы отображались статы из basic-->
+    <h1>Добро пожаловать в Winterhold</h1>
+    <a href='{% url "user:login" %}'>Войти</a>
+    <p>Еще не были на материке? Тогда вам сюда:</p>
+    <a href='{% url "user:registration" %}'>Зарегистрироваться</a>
+{% endblock %}

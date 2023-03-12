@@ -1,0 +1,14 @@
+{% extends 'Layout/basic.html' %}
+{% block title %}Hint{% endblock %}
+{% block content %}
+    <h1>Здравствуй, странник</h1>
+    <p>{{hint}}</p>
+    {% if hint != 'Мне больше нечего тебе сказать, странник' %}
+        <form action="">
+            <button>Попросить еще подсказку</button>
+        </form>
+    {% endif %}
+    <form action="{% url 'Game:travel' %}">
+        <button>Вернуться</button>
+    </form>
+{% endblock %} 

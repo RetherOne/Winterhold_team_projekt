@@ -1,0 +1,24 @@
+{% extends 'Layout/basic.html' %}
+{% block title %}Equip{% endblock %}
+{% block content %}
+    <h2>{{msg}}</h2>
+    <form id='equipment_form' action="" method="post">
+        {% csrf_token %}
+        <input type='hidden' value="" name='equipment' id='equipment'>
+    </form>
+    <div class="panel">
+    {% for item in inventory %}
+        <div class="goods" style="height: 150px" >
+            <p>{{item}}</p>
+            <p>Нужный уровень: {{item.level}}</p>
+            <button id='equip'
+                onclick="document.getElementById('equipment_form').elements.equipment.value='{{item}},{{item.section}}'; document.getElementById('equipment_form').submit();">Экипировать</button>
+        </div>
+    {% empty %}
+        <p class="empty">*Звук сверчков*</p>
+    {% endfor %}
+</div>
+    <form action="{% url 'Game:rest' %}">
+        <button>Назад</button>
+    </form>
+{% endblock %}

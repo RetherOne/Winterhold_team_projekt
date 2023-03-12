@@ -1,0 +1,18 @@
+{% extends 'Layout/basic.html' %}
+{% block title %}Eat{% endblock %}
+{% block content %}
+    <form id='eat_form' action="" method="post">
+        {% csrf_token %}
+        <input type="hidden" value="" name='eat' id='eat'>
+    </form>
+    {% for f, q in food.items %}
+        <p>{{f}}:{{q}}</p>
+        <button id='food'
+            onclick="document.getElementById('eat_form').elements.eat.value='{{f}}'; document.getElementById('eat_form').submit();">Съесть</button>
+    {% empty %}
+        <p>У вас нет еды в инвентаре</p>
+    {% endfor %}
+    <form action="{% url 'Game:rest' %}">
+        <button>Назад</button>
+    </form>
+{% endblock %}

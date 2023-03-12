@@ -1,0 +1,45 @@
+{% extends 'Layout/basic.html'%}
+{% block title %}Shop{% endblock %}
+{% block content %}
+     <!--Самый тяжелый для тебя шаблон, веселья там-->
+     <h1>Здравствуй, странник</h1>
+     <h2>{{msg}}</h2>
+
+     <form id='shop_form' action="" method="post">
+          {%csrf_token%}
+          <input type='hidden' value="" name='buy' id='buy'>
+     </form>
+<div class="panel">
+    {% for good in goods %}
+    <div class="goods">
+          <p>{{good.name}}</p>
+          <p>Цена:{{good.price}}</p>
+          <!--В Кузне было бы неплохо разделить оружие и броню; я могу отсортировать элементы в цикле-->
+          {% if good.section == "Weapon" %}
+               <p>Урон: {{good.damage}}</p>
+               <p>Нужный уровень: {{good.level}}</p>
+          {% elif good.section == "Armor" %}
+               <p>Защита: {{good.protection}}</p>
+               <p>Нужный уровень: {{good.level}}</p>
+          {% elif good.section == "Food" %}
+               <p>Сытость: {{good.satiety}}</p>
+          {% endif %}
+                  
+          <button id='{{good.name}}' 
+               onclick="document.getElementById('shop_form').elements.buy.value='{{good}},{{good.section}}'; document.getElementById('shop_form').submit();">Купить</button>
+        </div>
+     {% empty %}
+        <p class="empty">Кажись, мне нечего тебе предложить</p>
+    {% endfor %}
+</div>
+     <!--Вот это аккуратненько перенеси куда нибудь-->
+     {% if ch.place.name == 'Таверна' %}
+          <form action="{% url 'Game:show_hint' %}">
+               <button>Попросить подсказку</button>
+          </form>
+     {% endif %}
+
+     <form action="{% url 'Game:travel' %}">
+          <button>Вернуться</button>
+     </form>
+{% endblock %}

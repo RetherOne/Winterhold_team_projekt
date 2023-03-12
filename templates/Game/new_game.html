@@ -1,0 +1,9 @@
+{% extends 'Layout/basic.html' %}
+{% block title %}New game{%endblock%}
+{% block content %}
+    <p>Вы уверены, что хотите начать все заново?</p><br />
+    <a href='{% url "Game:new_game" %}'>Да</a><br />
+    <a href='{% url "Game:travel" %}'>Вернуться</a>
+{% endblock %}
+
+    

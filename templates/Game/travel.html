@@ -1,0 +1,47 @@
+{% extends 'Layout/basic.html' %}
+{% load static %}
+{% block title %}Главная{%endblock%}
+{% block content %}
+    <h1>Текущая локация: {{ch.place.name}}</h1>
+    <h2>x:{{ch.x}}, y:{{ch.y}}, z:{{ch.sublocation_pk}}</h2>
+    <p>{{msg}}</p>
+    <form id='direction_form' action="" method="post">
+        {%csrf_token%}
+        <input type='hidden' value="" name='direction' id='direction'>
+    </form>
+
+    <div class="block_c">
+        <button class="buttom_c" id='a'
+            onclick="document.getElementById('direction_form').elements.direction.value = 'a'; document.getElementById('direction_form').submit();">
+            <img style="transform: rotate(-90deg);" src="{% static 'Game/picture/buttom.png' %}"></button>
+                <div class="row">
+                    <button class="buttom_c" id='w'
+                        onclick="document.getElementById('direction_form').elements.direction.value = 'w'; document.getElementById('direction_form').submit();">
+                        <img src="{% static 'Game/picture/buttom.png' %}"></button>
+                    <button class="buttom_c" id='s'
+                        onclick="document.getElementById('direction_form').elements.direction.value = 's'; document.getElementById('direction_form').submit();">
+                        <img style="transform: rotate(180deg);" src="{% static 'Game/picture/buttom2.png' %}"></button>
+                </div>
+        <button class="buttom_c" id='d'
+            onclick="document.getElementById('direction_form').elements.direction.value = 'd'; document.getElementById('direction_form').submit();">
+            <img style="transform: rotate(90deg);" src="{% static 'Game/picture/buttom2.png' %}"></button>
+    </div>
+
+    {% if ch.place.transition %}
+        <button id = 'go_into'
+            onclick="document.getElementById('direction_form').elements.direction.value = 'go_into'; document.getElementById('direction_form').submit();">Перейти</button>
+    {% endif %}
+
+    {% if ch.place.is_shop %}
+        <form action="{% url 'Game:shop' ch.place.name %}">
+            <button>Зайти</button>
+        </form>
+    {% endif %}
+    
+    {% if ch.place.is_rest_place %}
+        <form action='{% url "Game:rest" %}'>
+            <button>Сделать привал</button>
+        </form>
+    {% endif %}
+    
+{% endblock %}

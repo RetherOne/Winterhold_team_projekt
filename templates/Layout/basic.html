@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <link rel="shortcut icon" href="{% static 'Game/picture/logo.png' %}" type="image/png">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'Game/css/main_css.css' %}" type='text/css'>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+        <script type="text/javascript">
+            function hotkey(event) {
+                let id = event.keyCode;
+                if (id == 87){
+                    document.getElementById('direction_form').elements.direction.value = 'w'; document.getElementById('direction_form').submit();
+                } else if (id == 65){
+                    document.getElementById('direction_form').elements.direction.value = 'a'; document.getElementById('direction_form').submit();
+                } else if (id == 83){
+                    document.getElementById('direction_form').elements.direction.value = 's'; document.getElementById('direction_form').submit();
+                } else if (id == 68){
+                    document.getElementById('direction_form').elements.direction.value = 'd'; document.getElementById('direction_form').submit();
+                }
+            }
+
+        </script>
+
+        <title>{% block title %}{%endblock%}</title>
+    </head>
+
+    <body onkeyup="hotkey(event)">
+        
+        {% if user.is_authenticated %}
+            <div class="stats" align="left">
+                <div class="bar">
+                    <div class="health">Здоровье: {{ch.hp}}/{{ch.max_hp}}</div>
+                    <div class="health_2" style="width: calc({{ch.hp}}% / calc({{ch.max_hp}} / 100) - 3px)"></div>
+                </div>
+                <p>Урон: {{ch.damage}}</p>
+                    <p>Монеты: {{ch.coins}}</p>
+                {% if ch.weapon %}
+                    <p>Оружие: {{ch.weapon}}</p>
+                {% endif %}
+                {% if ch.helmet %}
+                    <p>Шлем: {{ch.helmet}} </p>
+                {% endif %}
+                {% if ch.chestplate %}
+                    <p>Нагрудник: {{ch.chestplate}} </p>
+                {% endif %}
+                {% if ch.leggings %}
+                    <p>Поножи: {{ch.leggings}} </p>
+                {% endif %}
+                {% if ch.boots %}
+                    <p>Ботинки: {{ch.boots}} </p>
+                {% endif %}
+                    <p>Уровень: {{ch.level}}</p>
+                {% if ch.level != 15 %}
+                    <p>Опыт: {{ch.exp}}/{{ch.next_lvl}}</p>
+                {% endif %}
+                <p>Печати:</p>
+                <div class="seals">
+                {% for i in ch.seals %}
+                    <img class="seal" src="/static/Game/picture/seals/{{i}}" alt="{{i}}">
+                {%endfor%}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="content">
+            {%block content %}
+            {% endblock %}
+        </div>
+                <!--Вот это дело пристрой где нибудь с краю, на твой вкус-->
+            <div class="control">
+                {% if user.is_authenticated %}
+                    <p>{{user.name}}</p>
+                    <a class="link_c" href='{% url "Game:new_game_page" %}'><b>Начать новую игру</b></a>
+                    <a class="link_c" href='{% url "user:logout" %}'><b>Выйти</b></a>
+                {% endif %}
+                {% if user.is_superuser %}
+                    <a class="link_c" href='{% url "Game:god_mode" %}'><b>Life.py</b></a>
+                    <a class="link_c" href='{% url "Game:antigod_mode" %}'><b>Станислав</b></a>
+                {% endif %}
+            </div>
+            
+        
+    </body>
+
+</html>

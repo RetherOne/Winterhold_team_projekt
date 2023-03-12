@@ -1,0 +1,12 @@
+{% extends 'Layout/basic.html' %}
+{% block title %}Registration{%endblock%}
+{% block content %}
+    <!--Пиздец, Влад, порешай все это дело, выглядит по уебански-->
+    <form method="post" action='{% url "user:registration" %}'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <button name='submit'>register</button>
+        <input type="hidden" name='next' value="{% url 'Game:greetings'%}">
+    </form>
+    <a href="{% url 'Game:start_page'%}">Назад</a>
+{%endblock%}
